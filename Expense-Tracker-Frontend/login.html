@@ -7,74 +7,29 @@
   <title>Login</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background: #BCBAB8;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .container {
-      max-width: 400px;
-      width: 100%;
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      text-align: center;
-    }
-
-    .form {
-      margin-top: 20px;
-    }
-
-    .register-link {
-      margin-top: 15px;
-      display: block;
-      color: #825CFF;
-      font-size: 14px;
-      text-decoration: none;
-    }
-
-    .register-link:hover {
-      text-decoration: underline;
-    }
-
-    .forgot-password {
-      margin-top: 15px;
-      display: block;
-      color: #825CFF;
-      font-size: 14px;
-      text-decoration: none;
-    }
-
-    .forgot-password:hover {
-      text-decoration: underline;
-    }
-  </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>Login</h1>
-    <form class="form" id="login-form">
-      <div class="form-control">
-        <label for="username">Username</label>
-        <input type="text" id="username" placeholder="Enter your username" autocomplete="username">
-      </div>
-      <div class="form-control">
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password">
-      </div>
-      <button type="submit" class="btn" id="login-btn">Login</button>
-      <a href="#" class="forgot-password">Forgot Password?</a>
-      <a href="register.html" class="register-link">Don't have an account? Register</a>
-    </form>
-  </div>
+  <main class="page">
+    <div class="container narrow">
+      <h1 class="title">Welcome back</h1>
+      <p class="subtitle">Sign in to continue tracking your expenses.</p>
+
+      <form class="form" id="login-form">
+        <div class="form-control">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Enter your username" autocomplete="username">
+        </div>
+        <div class="form-control">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn" id="login-btn">Login</button>
+        <a href="#" class="link forgot-password">Forgot Password?</a>
+        <a href="register.html" class="link subtle">Don’t have an account? Register</a>
+      </form>
+    </div>
+  </main>
 
   <script>
     const storedUser = localStorage.getItem("user");
