@@ -4,124 +4,217 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
+  <title>Login | Expense Tracker</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
   <style>
+    :root {
+      --primary-color: #825CFF;
+      --primary-hover: #6a45e6;
+      --error-color: #ff4d4d;
+      --bg-gradient: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    }
+
     body {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
-      background: #BCBAB8;
+      background: var(--bg-gradient);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
       font-family: 'Poppins', sans-serif;
     }
 
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     .container {
-      max-width: 400px;
-      width: 100%;
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      max-width: 380px;
+      width: 90%;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
       text-align: center;
     }
 
-    .form {
-      margin-top: 20px;
+    h1 { margin-bottom: 25px; color: #333; }
+
+    /* Error Alert Styling */
+    #error-box {
+      display: none;
+      background: #ffebee;
+      color: var(--error-color);
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-size: 13px;
+      border: 1px solid #ffcdd2;
     }
 
-    .register-link {
-      margin-top: 15px;
+    .form-control {
+      text-align: left;
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    .form-control label {
       display: block;
-      color: #825CFF;
       font-size: 14px;
-      text-decoration: none;
+      margin-bottom: 8px;
+      color: #555;
+      font-weight: 600;
     }
 
-    .register-link:hover {
-      text-decoration: underline;
+    .form-control input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #eee;
+      border-radius: 10px;
+      font-family: inherit;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
     }
 
-    .forgot-password {
-      margin-top: 15px;
-      display: block;
-      color: #825CFF;
-      font-size: 14px;
-      text-decoration: none;
+    .form-control input:focus {
+      outline: none;
+      border-color: var(--primary-color);
     }
 
-    .forgot-password:hover {
-      text-decoration: underline;
+    /* Eye Icon Styling */
+    .password-wrapper {
+      position: relative;
     }
+
+    .toggle-password {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      color: #777;
+    }
+
+    .toggle-password:hover { color: var(--primary-color); }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+
+    .btn:hover { background: var(--primary-hover); transform: translateY(-2px); }
+
+    .links-container { margin-top: 20px; font-size: 13px; }
+    .links-container a { color: var(--primary-color); text-decoration: none; display: block; margin-top: 8px; }
+    .links-container a:hover { text-decoration: underline; }
   </style>
 </head>
 
 <body>
   <div class="container">
     <h1>Login</h1>
-    <form class="form" id="login-form">
+    
+    <div id="error-box"></div>
+
+    <form id="login-form">
       <div class="form-control">
         <label for="username">Username</label>
-        <input type="text" id="username" placeholder="Enter your username" autocomplete="username">
+        <input type="text" id="username" placeholder="Enter username" autocomplete="username">
       </div>
+
       <div class="form-control">
         <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password">
+        <div class="password-wrapper">
+          <input type="password" id="password" placeholder="Enter password" autocomplete="current-password">
+          <span class="toggle-password" id="eye-icon">
+            <svg id="eye-svg" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          </span>
+        </div>
       </div>
-      <button type="submit" class="btn" id="login-btn">Login</button>
-      <a href="#" class="forgot-password">Forgot Password?</a>
-      <a href="register.html" class="register-link">Don't have an account? Register</a>
+
+      <button type="submit" class="btn">Sign In</button>
+      
+      <div class="links-container">
+        <a href="#">Forgot Password?</a>
+        <a href="register.html">Don't have an account? <b>Register</b></a>
+      </div>
     </form>
   </div>
 
   <script>
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      // If logged in
-      window.location.href = "expense_tracker.html"; // redirected
-    }
+    const loginForm = document.getElementById('login-form');
+    const passwordInput = document.getElementById('password');
+    const eyeIcon = document.getElementById('eye-icon');
+    const eyeSvg = document.getElementById('eye-svg');
+    const errorBox = document.getElementById('error-box');
 
-    document.getElementById('login-form').addEventListener('submit', async (event) => {
+    // 1. Password Visibility Toggle
+    eyeIcon.addEventListener('click', () => {
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+      
+      // Update icon visual (optional: strike-through eye)
+      if (type === 'text') {
+        eyeSvg.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
+      } else {
+        eyeSvg.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
+      }
+    });
+
+    // 2. Form Submission & Error Handling
+    loginForm.addEventListener('submit', async (event) => {
       event.preventDefault();
+      errorBox.style.display = 'none'; // Clear old errors
+
       const username = document.getElementById('username').value.trim();
-      const password = document.getElementById('password').value.trim();
+      const password = passwordInput.value.trim();
 
       if (!username || !password) {
-        alert('Please enter both username and password.');
+        showError('Please fill in all fields.');
         return;
       }
-
-      const user = { username, password };
 
       try {
         const response = await fetch("http://localhost:8080/ExpTrack/login", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(user)
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password })
         });
 
+        const data = await response.json();
+
         if (!response.ok) {
-          const errorData = await response.json();
-          alert(errorData.message); // Backend sends plain error
+          showError(data.message || "Invalid login credentials.");
           return;
         }
 
-        const data = await response.json();
-        console.log(data.username);
         localStorage.setItem("user", data.username);
-        window.location.href = "expense_tracker.html"; // redirected
+        window.location.href = "expense_tracker.html";
 
+      } catch (error) {
+        showError("Connection failed. Is the server running?");
       }
-      catch (error) {
-        alert("Request failed: " + error.message);
-      }
-
     });
+
+    function showError(msg) {
+      errorBox.textContent = msg;
+      errorBox.style.display = 'block';
+    }
   </script>
 </body>
-
 </html>
