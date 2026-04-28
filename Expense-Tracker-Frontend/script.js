@@ -108,3 +108,26 @@ function init() {
 }
 
 init();
+
+document.querySelector(".forgot-password").addEventListener("click", (e) => {
+  e.preventDefault();
+  const email = prompt("Enter your registered email:");
+  if (email) {
+    fetch("http://localhost:8080/ExpTrack/forgot-password?email=" + email, {
+      method: "POST",
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.text();
+        } else {
+          throw new Error("Failed to reset password");
+        }
+      })
+      .then((message) => {
+        alert(message);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  }
+});
