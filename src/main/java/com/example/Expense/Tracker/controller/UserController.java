@@ -30,4 +30,14 @@ public class UserController {
         return userService.login(user.getUsername(), user.getPassword());
     }
 
+    @PostMapping("/forgot-password")
+    public ResponseEntity<?> forgotPassword(@RequestParam String email) {
+        try {
+            String resetMessage = userService.resetPassword(email);
+            return ResponseEntity.ok(resetMessage);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
 }

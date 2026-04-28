@@ -29,4 +29,16 @@ public class UserService {
         throw new RuntimeException("Invalid username or password");
     }
 
+    public String resetPassword(String email) {
+        User user = userRepo.findByEmail(email);
+        if (user == null) {
+            throw new RuntimeException("Email not found");
+        }
+        // Generate a temporary password (for simplicity, using 'temp1234')
+        String tempPassword = "temp1234";
+        user.setPassword(tempPassword);
+        userRepo.save(user);
+        return "Temporary password sent to your email: " + tempPassword;
+    }
+
 }
