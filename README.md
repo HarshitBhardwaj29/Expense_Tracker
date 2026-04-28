@@ -5,7 +5,8 @@
 [![MongoDB](https://img.shields.io/badge/Database-MongoDB-green)](https://www.mongodb.com/)
 [![Frontend](https://img.shields.io/badge/Frontend-HTML/CSS/JS-yellow)](#)
 
-A **full-stack Expense Tracker application** built using **Spring Boot** and **MongoDB**, focused on efficient personal finance tracking with a clean and scalable architecture.
+A **full-stack Expense Tracker application** built using **Spring Boot**, **MongoDB**, and **JavaScript**.  
+Users can register, log in, add transactions, and view reports for expenses, income, and balances.
 
 ---
 
@@ -16,7 +17,7 @@ This application allows users to:
 - Maintain real-time balance
 - View transaction history
 
-The backend uses a **RESTful architecture**, while **MongoDB (NoSQL)** enables flexible schema design and efficient data handling.
+The backend follows a **RESTful architecture**, while **MongoDB (NoSQL)** enables flexible and scalable data storage.
 
 ---
 
@@ -32,17 +33,16 @@ The backend uses a **RESTful architecture**, while **MongoDB (NoSQL)** enables f
 ---
 
 ### ⚙️ Backend Features
-- RESTful APIs for user and transaction management
+- RESTful APIs for authentication and transactions
 - Layered architecture (Controller → Service → Repository)
 - MongoDB integration using Spring Data MongoDB
-- Efficient document-based data modeling
 - Input validation and error handling
 
 ---
 
 ### 🎨 Frontend Features
 - Responsive UI with HTML, CSS, JavaScript
-- Interactive forms for user actions
+- Interactive forms
 - Dynamic transaction updates
 
 ---
@@ -55,9 +55,18 @@ The backend uses a **RESTful architecture**, while **MongoDB (NoSQL)** enables f
 | Frontend    | HTML, CSS, JavaScript |
 | Database    | MongoDB |
 | Build Tool  | Maven |
-| IDE         | IntelliJ IDEA, VS Code |
 
 ---
 
 ## 🏗️ System Architecture
 
+Frontend → REST API → Service Layer → Repository → MongoDB
+
+---
+
+## ⚙️ Setup & Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/Jerrwin/Expense-Tracker.git
+cd Expense-Tracker
